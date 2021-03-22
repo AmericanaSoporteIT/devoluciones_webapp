@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+{% block main %}
+
+{% if not g.user %}
+    {% include 'auth/login.html' %}
+{% endif %}
+{% if g.user %}
+
+{% endif %}
+
+{%endblock%}

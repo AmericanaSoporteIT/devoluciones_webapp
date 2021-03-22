@@ -1,0 +1,49 @@
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+ 40% {   opacity: 0.3; }
+
+}
+input[name="total"] {
+    width: 100%;
+}
+th[name="th_codigo"]{
+    width:8%;
+}
+th[id="numeral"]{
+    width: 5%
+}
+th{
+    width: 10%;
+}
+th[class="text-center"]{
+    width: 50%;
+}
+input[name="producto"]{
+    height: 25px;
+}
+input[name="precio_unitario"]{
+    height: 25px;
+}
+#table > thead > tr > th:nth-child(1),#table > thead > tr > th:nth-child(2){
+    width: 1%;
+    text-align:center;
+}
+#table > thead > tr > th:nth-child(3){
+    text-align:center;
+}
+#table > thead > tr > th:nth-child(4),#table > thead > tr > th:nth-child(5),#table > thead > tr > th:nth-child(6){
+    width: 5%;
+    text-align:center;
+}
+/* #table > tbody > tr > td{
+    font-size: 15px;
+
+} */
+@media only screen and (max-width: 1024px){
+    td[name="td_precio"] {
+        width: 18%;
+    }
+}

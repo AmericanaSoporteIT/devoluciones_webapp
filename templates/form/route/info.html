@@ -1,0 +1,44 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<section class="main">
+    <div class="container">      
+        <div class="col-xs-6"></div>
+        <div class="col-xs-4">
+          <div class="col-xs-4 mb-3">
+              <select name="empresa" id="empres"  class="form-control form-control-sm">
+                {% for empresa in Empresas %}
+                  <option value="">{{empresa['VEN_EMPRESA']}}</option>
+                {% endfor%}
+              </select>
+          </div>  
+          <table class="table table-sm table-striped">
+            <thead class="table-dark">
+              <tr class="text-center">
+                <th>Ruta</th>
+                <th>Nombre</th>
+                <th>Comision</th>
+                
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              {% for vendedor in Vendedores %}
+              <tr>
+                  
+                  
+                  <td>{{vendedor['VEN_CODIGO']}}</td>
+                  <td>{{vendedor['VEN_NOMBRE']}}</td>
+                  <td>{{vendedor['VEN_COMISION']}}</td>
+                  
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        
+        </div>
+      </div>
+    </div>
+  
+  </section>
+  
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+
+{% block main %}
+<section class="main">
+  <div class="page">
+    <div class="row col-md-10 mx-auto">
+      <div class="col-md pt-3 pb-0 mb-0">
+        <div class="col alert fade">
+          <strong id="message"></strong><span id="emoji"></span>
+          <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button> -->
+        </div>
+      </div>
+      <div class="col card card-body shadow-lg bg-white rounded mb-5">
+        {% block form_refund %}
+            {% include 'form/refund/form_refund.html' %} 
+        {% endblock %}
+        <div class="row">
+          <!-- Button trigger modal -->
+          <div class="col text-center">
+            <button id="guardar" type="button" class="col-4 btn btn-primary" data-toggle="modal" data-target="#SaveChanges_Modal">Enviar</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="SaveChanges_Modal" tabindex="-1" role="dialog" aria-labelledby="SaveChanges_ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SaveChanges_ModalLabel">Guardar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Desea guardar los cambios?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="save_changes" type="button" class="btn btn-primary">Guradar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}
+
+{% block script %}
+{% include 'script/js_refund.html' %}
+{% include 'script/js_bootstrap.html'%}
+{% endblock %}

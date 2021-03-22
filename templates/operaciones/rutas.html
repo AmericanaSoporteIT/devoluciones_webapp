@@ -1,0 +1,503 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+
+{% include 'navbar.html' %}
+
+{%endblock%}
+{% block main %}
+<main class="main">
+    <div class="row col-md-7 mx-auto mt-5">
+    <!--           <input type="number" id="correlativo" name="" value="" placeholder="456" class="form-control form-control-sm" readonly=""> -->
+    <div class="form-group border p-2">
+      <b><h5>Operacion de Ruta:</h5></b>
+      <div class="form-row">
+        <div class="col">
+          <label class="col-4" hidden><b>Fecha Creacion</b>
+            <input type="datetime-local" id="date_create" name="" value="" class="form-control form-control-sm" readonly>
+          </label>
+          <label class="col-2 pr-0"><b>N°</b>
+            <input type="text" id="correlativo" name="" value="" class="form-control form-control-sm" placeholder="#"  readonly>
+          </label>
+          <label class="col-4 col-md-3 pr-0"><b>Fecha Devolucion</b>
+            <input type="date" id="fecha_devolucion" name="" value="" class="form-control form-control-sm" required>
+          </label>
+          <label class="col-2 px-0" id="numero_ref_parent" hidden><b>No. Ref</b>
+            <input type="text" id="referencia" name="" class="form-control form-control-sm" maxlength="25">
+          </label>
+          <label class="col-3 pr-0"><b>Empresa</b>
+            <!-- <input type="text" id="empresa" name="" value="" placeholder="empresa" class="form-control form-control-sm" readonly=""></label> -->
+            <!-- <div class="col-md-8 px-0"> -->
+            <select id="cli_empresa" name="cli_empresa" class="form-control form-control-sm">
+              <option value="PAN">PAN - Jose Maria Fernandez Briz</option>  
+              <option value="PSA">PSA - Panificadora, S. A.</option>                
+            </select>
+          <!-- </div> -->
+          </label>
+
+          <label class="col-3 pr-0"><b>Ruta</b>
+            <input type="number" id="cli_vendedor" name="" value="" class="form-control form-control-sm" maxlength="4">
+          </label>
+          <label class="col-4 pr-0"><b>Vendedor</b>
+            <input type="text" id="ven_nombre" name="" value="" placeholder="Vendedor" class="form-control form-control-sm" readonly maxlength="40">
+          </label>
+          <label class="col-3 pr-0" hidden><b>Cliente</b>
+            <input type="text" id="input_cli_cliente" name="input_cli_cliente" class="form-control form-control-sm" placeholder="Codigo" maxlength="15" required>
+          </label>
+          <label class="col-auto pl-0" hidden>
+            <button type="button" id="buscar_cliente" class="btn btn-info btn-sm pt-0" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </label>
+          <!-- <label class="col-10"><b>cliente</b>
+            <select id="cli_nombre" name="" class="form-control form-control-sm">
+              <option value=""></option>
+            </select>
+          </label> -->
+          <label class="col-2"><b>Lista Precio</b>
+            <input type="text" id="lista_precio" name="" value="" class="form-control form-control-sm" placeholder="Lista" readonly="">            
+          </label>
+          <label class="col-2"><b>Precio Nivel</b>
+            <input type="text" id="nivel_precio" name="" value="" class="form-control form-control-sm" placeholder="Nivel" readonly="">
+          </label>
+          <label class="col-auto" hidden>
+            <p class="mb-0"><b>Tipo de Ruta</b></p>
+            <span class="mb-0">
+              <input type="radio" name="tipo_ruta" class="form-check-input  ml-3" disabled>
+              <label class="mb-0 pb-0 ml-5">Interna</label>
+            </span>
+            <span>
+              <input type="radio" name="tipo_ruta"  checked="" class="form-check-input ml-3" disabled>
+              <label class="mb-0 pb-0 ml-5">Externa</label>
+            </span>
+          </label>
+          <label class="col-auto" hidden><p class="mb-0"><b>Tipo</b></p>
+            <span class="mb-0" id="tipo_cambio">
+              <input type="radio" name="tipo" class=" checked form-check-input ml-3" value="C">
+              <label class="mb-0 pb-0 ml-5">Cambio</label>
+            </span>
+            <span class="mb-0" id="tipo_devolucion">
+              <input type="radio" name="tipo" class="form-check-input ml-3" value="R">
+              <label class="mb-0 pb-0 ml-5">walmart</label>
+            </span>
+            <span class="mb-0" id="tipo_vale">
+              <input type="radio" name="tipo" class="form-check-input ml-3" value="V">
+              <label class="mb-0 pb-0 ml-5">torre</label>
+            </span>
+          </label>
+          <label  class="col-auto"><b>Tipo Ingreso</b>
+            <select name="" id="tipo_ingreso" class="form-control form-control-sm" >
+              <option value=""></option>
+              <option value="C">Cambio</option>
+              <option value="D">Devolución</option>
+              <option value="R">Regreso</option>
+              <option value="N">Condonación</option>
+              
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+
+          <!-- <label class="col-auto"><p class="mb-0"><b>Tipo Operacion</b></p>
+            <span class="mb-0" id="tipo_cambio">
+              <input type="radio" name="tipo" class="  form-check-input ml-3" value="C">
+              <label class="mb-0 pb-0 ml-5">Cambio</label>
+            </span>
+            <span class="mb-0" id="tipo_devolucion">
+              <input type="radio" name="tipo" checked="" class="form-check-input ml-3" value="R">
+              <label class="mb-0 pb-0 ml-5">Devolucion</label>
+            </span>
+            <span class="mb-0" id="tipo_vale">
+              <input type="radio" name="tipo" class="form-check-input ml-3" value="V">
+              <label class="mb-0 pb-0 ml-5"></label>
+            </span>
+            <span class="mb-0" id="tipo_muestra">
+              <input type="radio" name="tipo" class="form-check-input ml-3" value="M">
+              <label class="mb-0 pb-0 ml-5">Muestra</label>
+            </span>
+
+            <span class="mb-0" id="tipo_donacion">
+              <input type="radio" name="tipo" class="form-check-input ml-3" value="D">
+              <label class="mb-0 pb-0 ml-5">Donacion</label>
+            </span>
+
+          </label> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group border p-2">
+      <div class="from-row">
+        <div class="col">
+          <label class="col-2 pr-0"><b>Producto</b>
+            <button type="button" id="comprobar_producto" hidden></button>
+            <input type="text" id="inv_inventario" name="" value="" class="form-control form-control-sm" placeholder="Codigo">
+          </label>
+          <label class="col-auto px-0">
+            <button type="button" id="buscar_producto" class="btn btn-info btn-sm pt-0" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </label>
+
+          <label class="col-auto pr-0" hidden><b>Descripcion</b>
+            <input type="text" id="inv_nombre" name="" value="" class="form-control form-control-sm" placeholder="Codigo">
+          </label>
+          <label class="col-2 px-0" style="width: 12%;"><b>Cant.</b>
+            <input type="number" id="cantidad" name="" value="" min="0.00"class="form-control form-control-sm" placeholder="0">
+          </label>
+          <label class="col-2 px-0"><b>Precio</b>
+            <input type="text" id="precio" name="" value="" class="form-control form-control-sm" placeholder="Precio Lista" readonly="">
+          </label>
+          <label class="col-auto px-0"><b>Causa:</b>
+            <select id="causa" name="causa" class="form-control form-control-sm">
+              <option value="B">1 - Buen Estado</option>
+              <option value="C">2 - Calidad</option>
+              <option value="D">3 - Daño</option>
+              <option value="M">4 - Moho</option>
+              <option value="V" selected>5 - Vencimiento</option>
+              <option value="O">6 - Otros</option>
+            </select>
+          </label>
+          <label class="col-2 pl-4"><b>Costo</b>
+            <input type="text" id="costo" name="" value="" class="form-control form-control-sm" placeholder="Costo" readonly="">
+          </label>
+          <div class="row mb-3 mt-1">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+              <button type="button" id="agregar" class="btn btn-info btn-block">Agregar</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+        </div>
+      </div>  
+
+      <div class="form-group border p-2">
+        <div class="from-group row">
+          <div class="col">
+            <div class="table-responsive-sm">
+              <b><caption>Detalle:</caption></b>
+              <div class="tableFixHead">
+
+              </div>
+              <table id="modal_table_clientes"class="table table-striped table-sm table-fixed" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th class="text-left" style="width:5%">#</th>
+                    <!-- <th class="text-left">#</th> -->
+                    <th class="text-left">Codigo</th>
+                    <th class="text-left">Producto</th>
+                    <!-- <th class="text-left">Producto</th> -->
+                    <th class="text-center"">Causa</th>
+                    <th class="text-right">Cant.</th>
+                    <th class="text-right">Precio</th>
+                    <th class="text-right">Monto</th>
+                    <th colspan="2" class="text-right">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody_detalle">
+                </tbody>
+                <tfoot class="table-dark">
+                  <tr class="text-right">
+                    <td colspan="6"><b>Total:</b></td>
+                    <td id="grantotal"></td>
+                    <td colspan="2"></td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="col">
+                <button type="button" id="grabar" name="grabar" class="btn btn-primary btn-block btn-sm">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Modal alerta-->
+    <!-- Button trigger modal -->
+    <button type="button" id="launch_alert" class="btn btn-primary" data-toggle="modal" data-target="#modal_alert" hidden></button>
+
+<div class="modal fade" id="modal_alert" tabindex="-1" role="dialog" aria-labelledby="modal_alert_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_alert_title_long"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_message">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal" hidden>cerrar</button>
+        <button type="button" id="opcion" class="btn btn-primary" hidden>Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal cliente -->
+  <!-- Button trigger modal -->
+  <button type="button" id="launch_cliente" class="btn btn-primary" data-toggle="modal" data-target="#modal_cliente" hidden></button>
+
+<div class="modal fade" id="modal_cliente" tabindex="-1" role="dialog" aria-labelledby="modal_cliente" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_cliente_title_long"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_cliente_message">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <div class="form-row mb-2">
+              <div class="col-auto">
+                <label><b>Nombre Cliente</b>
+                  <span><input type="text" name="cliente" id="modal_cliente_nombre" class ="form-control form-control-sm" placeholder="Cliente"></span>
+                  
+                </label>                
+              </div>
+              <div class="col" hidden>
+                <label><b>Cadena</b>
+                <span><input type="text" name="cliente" id="modal_cliente_cadena" class ="form-control form-control-sm" placeholder="Cadena"></span>
+                </label>
+              </div>
+              <div class="col" hidden>
+                <label> <b>SubCadena</b>
+                  <span><input type="text" name="cliente" id="modal_cliente_tienda" class ="form-control form-control-sm" placeholder="Tienda"></span>
+                </label>
+              </div>
+              <div>
+                <label class="mt-4">
+                  <span ><button id="modal_cliente_buscar" class="btn btn-info btn-sm">Buscar</button></span>
+                </label>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <div class="row">
+                <table id="lista_clientes" class="table table-responsive table-striped table-sm" cellspacing="0">
+                  <thead class="table-dark">
+                    <tr class="th-sm">
+                      <th class="th-sm">Empresa</th>
+                      <th class="th-sm" hidden>Id. Tienda</th>
+                      <th class="th-sm">Codigo</th>
+                      <th class="th-sm w-50">Cliente</th>
+                      <th class="th-sm">Cadena</th>
+                      <th class="th-sm">Tienda</th>
+                      <th><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
+                      </svg></span> </th>                
+                    </tr>
+                  </thead>
+                  <tbody id="tbody_clientes">
+
+                  </tbody>
+                </table>            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modal_cliente_cerrar" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" id="modal_cliente_opcion" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- end modal cliente-->
+<!-- Modal Producto-->
+    <!-- Button trigger modal -->
+    <button type="button" id="launch_producto" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_producto" hidden></button>
+
+<div class="modal fade" id="modal_producto" tabindex="-1" role="dialog" aria-labelledby="modal_producto_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_producto_title_long">Buscar Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_producto_message">
+        <div class="row">
+          <div class="col-auto">
+            <div class="row form-group inline-block">
+              <div class="col-md pr-0"><input type="text" name="" id="modal_input_producto" class="form-control form-control-sm"></div>
+              <div class="col-md"><button id="modal_producto_buscar" class="btn btn-info btn-sm">Buscar</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto w-100">
+            <table class="table table-sm table-striped" >
+              <thead class="table-dark">
+                <tr>
+                  <th>UPC</th>
+                  <th>Codigo</th>
+                  <th>Descripcion</th>
+                </tr>
+              </thead>
+              <tbody class="table-responsive-sm">
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal" hidden>cerrar</button>
+        <button type="button" id="opcion" class="btn btn-primary" hidden>Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</main>
+<style>
+
+ 
+ table{
+  display: block;
+  height: 200px;
+  overflow-y: auto;
+}
+tbody tr{
+  width: 100%;
+}
+#modal_table_clientes > thead > tr > th:nth-child(3){
+  width: 70%;
+}
+#tbody_detalle > tr > td:nth-child(1) {
+  width: 5%;
+}
+/* 
+.table-fixed{
+  width: 100%;
+}
+
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        float:left;
+      }
+    }
+  } */
+</style>
+  <script>
+    // document.querySelector("#date_create").valueAsDate = new Date();
+  var now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  document.querySelector("#date_create").value = now.toISOString().slice(0,19);
+
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="{{ url_for('static', filename='js/operaciones/Rutas.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/inputmask.js') }}"></script>
+  
+  {%endblock%}
+{% block script %}
+{% include 'script/js_bootstrap.html'%}
+{% endblock %}
+
+
+

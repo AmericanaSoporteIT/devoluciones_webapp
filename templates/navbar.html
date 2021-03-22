@@ -1,0 +1,129 @@
+{% block navbar %}
+<div id="navbar" name="navbar" class="fixed-top ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+      <a class="navbar-brand ml-2" href="/">
+        {# <img class="" src="{{ url_for('static', filename='img/minilogo.png') }}" width="136" height="44"> #}
+        <span class="text-nowrap font-weight-bold">{{g.empresa}}</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if g.user %}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="refund" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Devolución y Cambios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="refund">
+              <h6 class="dropdown-header">Ingresar Operaciones</h6>
+              <a class="dropdown-item" href="{{ url_for('clientes.clientes')}}">Cliente</a>
+              <a class="dropdown-item" href="{{ url_for('rutas.clientes')}} ">Ruta</a>
+              <div class="dropdown-divider"></div>
+              <h6 class="dropdown-header">Buscar Operacion</h6>
+              <a class="dropdown-item" href="{{ url_for('clientes.clientes')}}">No. Registro</a>
+              <a class="dropdown-item" href="{{ url_for('clientes.clientes')}}">No. Referencia</a>
+              {# 
+              <a class="dropdown-item" href="{{ url_for('refund.search')}}">Buscar por Correlativo</a>
+              #}
+            </div>
+    
+          </li>
+          {# 
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="reports" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Reportes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="reports">
+              <a class="dropdown-item" href="#">Impresion de Ruta</a>
+              <a class="dropdown-item" href="#">Impresion de Productos</a>
+              <div class="dropdown-divider">
+              </div>
+              <a class="dropdown-item" href="#">----------</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="consult" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Consultas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="consult">
+              <a class="dropdown-item" href="{{ url_for('consult.customer') }}">Clientes</a>
+              <a class="dropdown-item" href="#">Vendedores</a>
+              <div class="dropdown-divider">
+              </div>
+              <a class="dropdown-item" href="#">----------</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="configuration" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Configuracion
+            </a>
+            {# {% if g.user['is_admin'] %} #}
+            <div class="dropdown-menu" aria-labelledby="configuration">
+              <a class="dropdown-item" href="{{ url_for('auth.register') }}">Usuario</a>
+              <a class="dropdown-item" href="{{ url_for('route.route') }}">Rutas</a>
+              <a class="dropdown-item" href="{{ url_for('route.route_info') }}">Infomacion Ruta</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Editar</a>
+            </div>
+            {# {% endif %} #}
+          </li>
+        </ul>
+        
+        {% endif %}
+        {% if g.user %}
+    
+        <div class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" id="menu_logout" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menu_logout"> 
+                <a class="dropdown-item">{{ g.user['USER_NOMBRE'] }}</a>
+                <button class="dropdown-item"><a class="btn btn-sm btn-block btn-info" href="{{ url_for('auth.logout') }}">Salir</a></button>
+              </div>
+            </li>
+          </ul>
+
+
+          {% else %}
+          {% endif %}
+
+        </div>
+
+    </nav>
+    <nav aria-label="breadcrumb p-0">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+          <p class="my-0 text-dark">
+            <span>
+              <a href="{{ url_for('index')}}">@</a> 
+              <strong>{{ g.title }}</strong>
+              {# 
+              {% for crumb in g.breadcrumbs %}
+              <a href="{{ crumb.path }}">{{ crumb.title }}</a>
+              {% if not loop.last %}&raquo;{% endif %}
+              {% endfor %} 
+              #}
+            </span>
+          </p>
+          
+        </li>
+      </ol>
+    </nav>
+    </div>
+
+</div>
+<div style="height: 102px;"></div>
+{% endblock %}

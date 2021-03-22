@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+{% block main %}
+<section class="main">
+    <div class="page">
+      <div class="row col-md-10 mx-auto">
+        <div class="col-md pt-3 pb-0 mb-0">
+          <div class="col alert fade">
+            <strong id="message"></strong><span id="emoji"></span>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button> -->
+          </div>
+        </div>
+        <div class="col card card-body shadow-lg bg-white rounded mb-5">
+          <div class="row">
+            <div class="col text-center">
+                <div class="row" id="input_area" name="input_area">
+                    <div class="col">
+                      <label for="input_clicodigo" class="mb-0">Rango de Fecha</label>
+                        <div class="col">
+                            <input id="input_fecha_inicial" name="input_filter" class="form-control form-control-sm" type="date" placeholder="Fecha Incial" >
+                        </div>
+                        <div class="col mt-2">
+                            <input id="input_fecha_final" name="input_filter" class="form-control form-control-sm" type="date" placeholder="Fecha Final" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col">
+                        <!-- Default dropend button -->
+                        <div class="dropdown">
+                            <a class="btn btn-info btn-sm dropdown-toggle" id="filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">filtrar por...</a>
+                            <div class="dropdown-menu" aria-labelledby="filter">
+                            <!-- Dropdown menu links -->
+                                <div class="dropdown-item">
+                                    <div class="form-check">
+                                        <input id="check_clicodigo" name="checkbox" class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">Cliente</label>    
+                                    </div>    
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="form-check">
+                                        <input id="check_fecha" name="checkbox" class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Rango de Fecha</label>    
+                                    </div>    
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="form-check">
+                                        <input id="check_numrecl" name="checkbox" class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">N° Reclamo</label>    
+                                    </div>    
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="form-check">
+                                        <input id="check_loterecl" name="checkbox" class="form-check-input" type="checkbox" role="checkbox" aria-checked>
+                                        <label class="form-check-label">Lote</label>    
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item">
+                                    <button id="busqueda_filtrada" type="button" class="btn btn-sm btn-primary btn-block">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mt-4">
+                            <button id="buscar" type="button" class="btn btn-sm btn-primary btn-block">Enviar</button>
+                        </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="table-responsive table-responsive-sm">
+            <table class="table table-sm table-hover table-bordered table-striped" id="table" name="table">
+              <thead class="table-dark">
+                <th>#</th>
+                <th>Vendedor</th>
+                <th>Cliente</th>
+                <th>Fecha Creacion</th>
+                <th>Fecha Reclamo</th>
+                <th>opciones</th>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  
+{% endblock %}
+{% block script %}
+  {# {% include 'script/js_refund.html'%} #}
+  <script src="{{ url_for('static', filename='js/refund/filter.js' ) }}"></script>
+  <script src="{{ url_for('static', filename='js/convert_date.js' ) }}"></script>
+  {% include 'script/js_bootstrap.html'%}
+{% endblock %}

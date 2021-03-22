@@ -1,0 +1,82 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Ingreso de Devoluciones</li>
+  </ol>
+</nav>
+
+<main class="main">
+  <section class="container">
+    <div class="row col-auto">
+    </div>
+  </section>
+</main>
+
+
+{% block header %}
+  {% block title %}
+   {% for crumb in g.breadcrumbs %}
+            <a href="{{ crumb.path }}">{{ crumb.title }}</a>
+            {% if not loop.last %}&raquo;{% endif %}
+        {% endfor %}
+  {% endblock %}
+{% endblock %}
+
+
+<div class="row">
+    <div class="abs-center">
+      <div class="row col-md">
+        <div class="row">
+          {% if message %}
+          <div class="col-xs-12">
+            <span class="label label-primary">{{message}}</span>
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+      </div> 
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+SELECT RTRIM(LTRIM(VEN_EMPRESA)) AS empresa ,RTRIM(LTRIM(VEN_NOMBRE)) AS nombre ,RTRIM(LTRIM(VEN_CODIGO)) as codigo from QSYSTEMS.dbo.VENDEDOR
+
+
+
+https://jsfiddle.net/KyleMit/rr96p4vv/
+
+$('.hide-column').click(function(e){
+  var $btn = $(this);
+  var $cell = $btn.closest('th,td')
+  var $table = $btn.closest('table')
+
+  // get cell location - https://stackoverflow.com/a/4999018/1366033
+  var cellIndex = $cell[0].cellIndex + 1;
+
+  $table.find(".show-column-footer").show()
+  $table.find("tbody tr, thead tr")
+        .children(":nth-child("+cellIndex+")")
+        .hide()
+})
+
+$(".show-column-footer").click(function(e) {
+    var $table = $(this).closest('table')
+    $table.find(".show-column-footer").hide()
+    $table.find("th, td").show()
+
+})
+
+<button class="pull-right btn btn-default btn-condensed hide-column" 
+            data-toggle="tooltip" data-placement="bottom" title="Hide Column">
+    <i class="fa fa-eye-slash"></i>  
+</button>
+
+
+<tfoot class="show-column-footer">
+  <tr>
+   <th colspan="4"><a class="show-column" href="#">Some columns hidden - click to show all</a></th>
+ </tr>
+</tfoot>

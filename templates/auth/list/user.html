@@ -1,0 +1,53 @@
+{% include 'navbar.html' %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% block content %}
+<section class="main">
+  <div class="container">      
+      <div class="col-xs-6"></div>
+      <div class="col-xs-4">
+        <table class="table table-sm table-striped">
+          <colgroup>
+            <col class="visible_class"/>
+            <col class="visible_class"/>
+            <col class="invisible_class"/>  
+         </colgroup>
+          <thead class="table-dark">
+            <tr>
+              <th>Usurio</th>
+              <th>Correo</th>
+              <th colspan="2" class="text-center">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in Users %}
+            <tr>
+              <td>{{ user['username']}}</td>
+              <td>{{ user['email']}}</td>
+              <td class="text-center row">
+                <div class="col-sm"><button class="btn btn-primary btn-sm">Editar</button></div>
+                <div class="col-sm"><a href="#"><button class="btn btn-primary btn-sm">Reset</button></a></div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
+
+

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+{% block main %}
+
+  {% if g.user %}
+      {# 
+      {% include 'sidebar.html' %}
+      #}
+    {% if g.user['USER_NOMBRE'] %}
+        <div id="alert" name="alert" class="alert fade" role="alert">
+          <strong>Bienvenido {{ g.user['USER_NOMBRE']}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <script>
+          setTimeout(() => {
+            var alert =document.getElementById("alert");
+            alert.classList.remove("show")
+          }, 2500);
+        </script>
+    {% endif %}
+    {% else %}
+        <!-- {# {% include 'auth/login.html' %}  #} -->
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+{% block main %}
+<main class="main">
+  <div class="page">
+    <div class="row">
+      <div class="col card card-body">
+        <form class="">
+          <div class="form-group row">
+            <label for="numero" class="col-sm-3 col-form-label">Numero</label>
+            <div class="col-sm-9">
+              <select  type="text" class="form-control form-control-sm" id="numero">
+              </select>
+            </div>
+    
+            <label for="vendedor" class="col-sm-3 col-form-label">Vendedor</label>
+            <div class="col-sm-9 mt-2">
+              <select type="password" class="form-control form-control-sm" id="vendedor">
+              </select>
+            </div>
+
+            <label for="vendedor" class="col-sm-3 col-form-label">Cliente</label>
+            <div class="col-sm-9 mt-2">
+              <select type="password" class="form-control form-control-sm" id="vendedor">
+              </select>
+            </div>
+
+            <label for="fecha" class="col-sm-3 col-form-label">Fecha</label>
+            <div class="col-sm-9 mt-2">
+              <input type="date" class="form-control form-control-sm" id="fecha" name="fecha">           
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="concepto" class="col-sm-3 col-form-label">Concepto</label>
+            <div class="col-sm-9">
+              <select name="concepto" id="concepto" class="form-control form-control-sm"></select>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-md-12">
+              <table class="table table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Articulos</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </form>
+    
+      </div>
+    </div>
+  </div>
+
+</main>
+  
+{% endblock %}
+
+{%block script %}
+<script src="{{ url_for('static', filename='js/refund.js' ) }}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{%block navbar %}
+{% include 'navbar.html' %}
+{%endblock%}
+{% block main %}
+
+{% block login %}
+<div class="container my-5 py-5">
+  <div class="d-flex justify-content-center align-items-center mt-5 pt-5" style="height:100px;">
+  <div class="abs-center">
+    <div class="row col-md">
+      <div class="col-xs-4 card card-body shadow-lg p-3 mt-5 bg-white rounded">
+        <form id="form" name="form" class="form" method="POST" action="/auth/login">        
+          <div class="form-group">
+            <label for="empresa">Empresa:</label>
+            <select type="text" name="empresa" id="empresa" class="form-control">
+              {% if Empresas %}
+                {% for empresa in Empresas %}
+                    <option><span class="col-md input-group-prepend input-group-text">{{empresa[0]}}</span> | <span class="col-md">{{empresa[1]}}</span></option>
+                {% endfor%}
+                  
+              {% endif %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" name="usuario" id="usuario" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="clave">Clave:</label>
+            
+            <input type="password" name="clave" id="clave" class="form-control">
+            <div class="mt-2 alert-warning"><div class="message"></div></div>
+          </div>
+          <div class="clearfix text-center mb-1 pt-3">
+            <input type="submit" class="btn btn-primary btn-block">
+            
+          </div>
+        </form>
+      </div> 
+    </div>
+  </div>
+</div>  
+{% endblock %}
+{% endblock %}
+{% block local_script %}
+<script src="{{ url_for('static', filename='js/bloq_mayus.js' ) }}"></script>
+{%endblock%}
+
+
+

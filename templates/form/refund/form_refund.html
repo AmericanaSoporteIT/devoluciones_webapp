@@ -1,0 +1,84 @@
+{% block form_refund %}
+<form id="form" name="form">
+  <div class="form-group row border p-3 mx-3">
+    <label for="numero" class="col-sm-3 col-form-label" hidden>Numero</label>
+    <div class="col-sm-6 mb-2" hidden>
+      <input id="numero" name="numero" type="number" class="form-control form-control-sm">
+    </div>
+    <div class="col-sm-3" hidden>
+      <button id="search" name="search" type="button" class="btn btn-primary btn-sm">Buscar</button>
+    </div>
+
+    <label for="vendedor" class="col-sm-3 col-form-label">Vendedor</label>
+    <div class="col-sm-9 mt-2">
+      <select id="vendedor" name="vendedor" class="form-control form-control-sm">
+      </select>
+    </div>
+
+    <label for="cliente" class="col-sm-3 col-form-label">Cliente</label>
+    <div class="col-sm-9 mt-2">
+      <select id="cliente" name="cliente" class="form-control form-control-sm">
+      </select>
+    </div>
+
+    <label for="fecha" class="col-sm-3 col-form-label">Fecha</label>
+    <div class="col-sm-9 mt-2">
+      <input id="fecha" name="fecha" type="date" class="form-control form-control-sm">
+      <input id="hora" name="hora" type="time" class="form-control form-control-sm" readonly hidden>
+    </div>
+  </div>
+  <div class="form-group row  row border p-2 mx-3">
+    <label for="concepto" class="col-sm-3 col-form-label">Concepto</label>
+    <div class="col-sm-9 mt-2">
+      <select id="concepto" name="concepto" class="form-control form-control-sm">
+        <option value="C">CAMBIO DIRECTO</option>
+        <option value="R">RECAMBIO WALMART</option>
+        <option value="V">VALES TORRE</option>
+
+      </select>
+    </div>
+    <label for="reclamo" class="col-sm-3 col-form-label">Reclamo</label>
+    <div class="col-sm-9 mt-2">
+      <input id="reclamo" name ="reclamo" class="form-control form-control-sm" placeholder="# Documento" required>
+    </div>
+    <label for="lote" class="col-sm-3 col-form-label">Lote</label>
+    <div class="col-sm-9 mt-2">
+      <input id="lote" name="lote" type="text" class="form-control form-control-sm" placeholder="# Lote">
+    </div>
+    <label for="fecha_reclamo" class="col-sm-3 col-form-label">Fecha de Reclamo</label>
+    <div class="col-sm-9 mt-2">
+      <input id="fecha_reclamo" name="fecha_reclamo" type="date"  class="form-control form-control-sm">
+    </div>
+
+  </div>
+  <div class="row ">
+    <div class="table-responsive table-responsive-md">
+      <table class="table table-sm table-hover table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th id="numeral">#</th>
+            <th name="th_codigo">Codigo</th>
+            <th name="th_producto"class="text-center">Producto</th>
+            <th name="th_cant">Cantidad</th>
+            <th>Costo U.</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot class="table-dark text-small py-0 my-0">
+          <tr >
+            <td colspan="3"><span>Total</span></td>
+            <td class="text-right" colspan="1"><div class="col pr-0"></div></td>
+            <td colspan="1">
+              <div class="row">
+                <div id="total" name="total" class="col pl-0 text-right">0.0</div>  
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div> 
+  </div>  
+</form>
+{% endblock %}
+
+
