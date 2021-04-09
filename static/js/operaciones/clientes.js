@@ -988,16 +988,16 @@ const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
 })));
 
 
-const date_offset = new Date("1900-01-01 0:0:0.000").getTime();
-var current_date;
+// const date_offset = new Date("1900-01-01 0:0:0.000").getTime();
+// var current_date;
 
-function DateNumber(current_date) {
-  var numberdate = (current_date.getTime() - date_offset) / (1000 * 3600 * 24);
-  return Math.round(numberdate);
-}
+// function DateNumber(current_date) {
+//   var numberdate = (current_date.getTime() - date_offset) / (1000 * 3600 * 24);
+//   return Math.round(numberdate);
+// }
 
-function FromNumbertoDate(number) {
-  var reverse = date_offset + (number * (1000 * 3600 * 24));
-  var date = new Date(reverse);
-  return date
-}
+// function FromNumbertoDate(number) {
+//   var reverse = date_offset + (number * (1000 * 3600 * 24));
+//   var date = new Date(reverse);
+//   return date
+// }
