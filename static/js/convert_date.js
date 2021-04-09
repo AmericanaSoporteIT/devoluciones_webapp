@@ -1,4 +1,4 @@
-const date_offset = new Date("1900-01-01 0:0:0.000").getTime();
+var date_offset = new Date("1900-01-01 0:0:0.000").getTime();
 var current_date;
 
 function DateNumber(current_date) {
