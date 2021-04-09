@@ -431,6 +431,7 @@
   overflow-y: auto;
 }
 
+
 </style>
   <script>
     // document.querySelector("#date_create").valueAsDate = new Date();
@@ -439,16 +440,17 @@
   document.querySelector("#date_create").value = now.toISOString().slice(0,19);
 
   </script>
+<script>
+    var dev = JSON.parse('{{ dev | tojson | safe }}');
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="{{ url_for('static', filename='js/operaciones/Clientes.js') }}"></script>
   <script src="{{ url_for('static', filename='js/convert_date.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/view/view_dev.js') }}"></script>
   <script src="{{ url_for('static', filename='js/inputmask.js') }}"></script>
   
   {%endblock%}
 {% block script %}
 {% include 'script/js_bootstrap.html'%}
 {% endblock %}
-
-
-
