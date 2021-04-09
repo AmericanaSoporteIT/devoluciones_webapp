@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import render_template
 from flask import request, Response
-from flask  import jsonify
+from flask  import jsonify, abort
 from flask import json 
 from Application.auth import login_required
 from Application.breadcrumb import breadcrumb
@@ -211,10 +211,14 @@ def view_operacion_cliente(texto):
     res = serializer(consult)
     data = res
     print (data)
-    
     print(json.dumps(data))
-    
-    return "<script> var obj= JSON.parse('" + json.dumps(res)+"'); </script>"
+    if len(data) > 0:
+        #return "<script> var obj= JSON.parse('" + json.dumps(res)+"'); </script>"
+        return render_template('view/vista_devolucion_cliente.html', dev = data)
+    elif len(data) == 0:
+        return render_template('buscar/buscar_devolucion.html')
+    else:
+        return abort(404)
     #res = serializer(consult)
     # else:
     #     return render_template('operaciones/vista/view_cliente.html', registro= data)
