@@ -58,7 +58,6 @@ def customer():
             )
             return render_template('view/customer/customer.html', Clientes=result_customers)
 
-        
     return render_template('view/customer/customer.html', Clientes=result_customers)
 
 
