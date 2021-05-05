@@ -292,10 +292,7 @@ input_inv_inventario.addEventListener('keydown', function(e){
          
       }
    }
-   
-   else if (e.keyCode == 13 || e.keyCode == 9){
-      console.log("activo if codiog 13");
-   }
+   // ESC = 27, DEL = 
 }); 
 
  
@@ -599,6 +596,39 @@ btn_modal_aceptar.addEventListener("click", function(e){
  *  fin buscar producto
  */
 
+//boton buscar modal producto_buscar
+document.querySelector("#modal_input_producto").addEventListener('input', (e)=>{
+         console.log(e.path[0].value);
+   });
+//}
+
+document.querySelector("#modal_producto_buscar").addEventListener('click', (e)=>{
+   if(e){
+      if ( document.querySelector("#inv_inventario").value !=""){
+         fetch(window.origin+ 'product', );
+      }
+
+   }
+});
+
+//funcion click en fila de producto
+document.querySelectorAll("tr[name='fila_producto']").forEach( (el) => {   
+   el.addEventListener('click', (e)=>{ 
+      console.log(e.path[1]);
+      //ocultar modal
+      $("#modal_producto").modal("hide");
+      //obtener el elemento seleccionado y pornerlo en el input de producto
+      document.querySelector("#inv_inventario").value = e.path[1].querySelectorAll("td")[1].innerHTML
+   });                     
+}); 
+
+//lanzar modal 
+document.querySelector("#buscar_producto").addEventListener('click', (e)=>{
+   if(e){
+      document.querySelector("#launch_producto").click();      
+      
+   }
+});
 
 
 
@@ -988,16 +1018,16 @@ const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
 })));
 
 
-const date_offset = new Date("1900-01-01 0:0:0.000").getTime();
-var current_date;
+// const date_offset = new Date("1900-01-01 0:0:0.000").getTime();
+// var current_date;
 
-function DateNumber(current_date) {
-  var numberdate = (current_date.getTime() - date_offset) / (1000 * 3600 * 24);
-  return Math.round(numberdate);
-}
+// function DateNumber(current_date) {
+//   var numberdate = (current_date.getTime() - date_offset) / (1000 * 3600 * 24);
+//   return Math.round(numberdate);
+// }
 
-function FromNumbertoDate(number) {
-  var reverse = date_offset + (number * (1000 * 3600 * 24));
-  var date = new Date(reverse);
-  return date
-}
+// function FromNumbertoDate(number) {
+//   var reverse = date_offset + (number * (1000 * 3600 * 24));
+//   var date = new Date(reverse);
+//   return date
+// }

@@ -307,10 +307,10 @@
     </div>
   </div>
 </div>
-<!--- end modal cliente -->
-<!-- Modal Producto -->
-<!-- Button trigger modal -->
-<button type="button" id="launch_producto" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_producto" hidden></button>
+<!--- end modal cliente-->
+<!-- Modal Producto-->
+    <!-- Button trigger modal -->
+    <button type="button" id="launch_producto" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_producto" hidden></button>
 
 <div class="modal fade" id="modal_producto" tabindex="-1" role="dialog" aria-labelledby="modal_producto_title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -332,75 +332,75 @@
         </div>
         <div class="row">
           <div class="col-auto w-100">
-            <table class="table table-sm  table-hover" >
+            <table class="table table-sm table-striped" >
               <thead class="table-dark">
-                <tr name="titulo_fila_producto">
+                <tr>
                   <th>UPC</th>
                   <th>Codigo</th>
                   <th>Descripcion</th>
                 </tr>
               </thead>
               <tbody class="table-responsive-sm">
-                <tr name="fila_producto">
-                  <td>1</td>
-                  <td>45664</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-                <tr name="fila_producto">
-                  <td>2</td>
-                  <td>589</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
-                  <td>3</td>
-                  <td>968</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
-                  <td>4</td>
-                  <td>789</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
-                  <td>5</td>
-                  <td>598</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
-                  <td>6</td>
-                  <td>1578</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
-                  <td></td>
-                  <td>487</td>
-                  <td>ASDFSADFSADF</td>
-                </tr>
-
-                <tr name="fila_producto">
+                <tr>
                   <td>464665654665</td>
-                  <td>7895</td>
+                  <td>5HM3</td>
                   <td>ASDFSADFSADF</td>
                 </tr>
-
-                <tr name="fila_producto">
+                <tr>
                   <td>464665654665</td>
                   <td>5HM3</td>
                   <td>ASDFSADFSADF</td>
                 </tr>
 
-                <tr name="fila_producto">
+                <tr>
                   <td>464665654665</td>
                   <td>5HM3</td>
                   <td>ASDFSADFSADF</td>
                 </tr>
 
-                <tr name="fila_producto">
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
+                  <td>464665654665</td>
+                  <td>5HM3</td>
+                  <td>ASDFSADFSADF</td>
+                </tr>
+
+                <tr>
                   <td>464665654665</td>
                   <td>5HM3</td>
                   <td>ASDFSADFSADF</td>
@@ -414,7 +414,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal" >cerrar</button>
+        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal" hidden>cerrar</button>
         <button type="button" id="opcion" class="btn btn-primary" hidden>Aceptar</button>
       </div>
     </div>
@@ -431,6 +431,7 @@
   overflow-y: auto;
 }
 
+
 </style>
   <script>
     // document.querySelector("#date_create").valueAsDate = new Date();
@@ -439,16 +440,17 @@
   document.querySelector("#date_create").value = now.toISOString().slice(0,19);
 
   </script>
+<script>
+    var dev = JSON.parse('{{ dev | tojson | safe }}');
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="{{ url_for('static', filename='js/operaciones/Clientes.js') }}"></script>
   <script src="{{ url_for('static', filename='js/convert_date.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/view/view_dev.js') }}"></script>
   <script src="{{ url_for('static', filename='js/inputmask.js') }}"></script>
   
   {%endblock%}
 {% block script %}
 {% include 'script/js_bootstrap.html'%}
 {% endblock %}
-
-
-
