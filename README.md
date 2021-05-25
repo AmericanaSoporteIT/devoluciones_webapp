@@ -2,7 +2,7 @@
 Aplicacion de ingreso de Devoluciones y Cambios
 Modelo Cliente servidor: 
   #### Backend:
-    + Python: Framework Flask
+    + Python: python 3.6.8
   #### Fronted:
     + Javascript: JavaScript Vanilla
     + CSS: Bootstrap 4
